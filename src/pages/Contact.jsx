@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin, Facebook, Twitter, Instagram } from "lucide-react";
 
+const CONTACT_ENDPOINT =
+  import.meta.env.VITE_PORTAL_CONTACT_ENDPOINT ||
+  "https://portal.sfgs.com.ng/?page=contact_submit";
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -21,8 +25,8 @@ const Contact = () => {
     setStatus("Sending...");
 
     try {
-      // Using relative URL since both files are on same domain
-      const response = await fetch('/submit_form.php', {
+      // Send to the portal "contact_submit" receiver (InfinityFree hosted)
+      const response = await fetch(CONTACT_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -38,29 +42,30 @@ const Contact = () => {
       console.log('Response status:', response.status);
       console.log('Response ok:', response.ok);
 
-      if (response.ok) {
-        const result = await response.json();
-        console.log('Response body:', result);
-        
-        if (result.success) {
-          setStatus(result.success);
-          setFormData({ name: "", email: "", message: "" });
-          
-          // Clear success message after 5 seconds
-          setTimeout(() => {
-            setStatus(null);
-          }, 5000);
-        } else if (result.error) {
-          setStatus(result.error);
-        }
-      } else {
-        try {
-          const errorResult = await response.json();
-          setStatus(errorResult.error || `Server error: ${response.status}`);
-        } catch {
-          setStatus(`Server error: ${response.status} - ${response.statusText}`);
-        }
+      let result = null;
+      try {
+        result = await response.json();
+      } catch {
+        // If a host injects HTML (e.g. block page), keep a readable status message.
       }
+
+      if (response.ok && result?.success) {
+        setStatus(result.success);
+        setFormData({ name: "", email: "", message: "" });
+
+        // Clear success message after 5 seconds
+        setTimeout(() => {
+          setStatus(null);
+        }, 5000);
+        return;
+      }
+
+      if (result?.error) {
+        setStatus(result.error);
+        return;
+      }
+
+      setStatus(`Server error: ${response.status} - ${response.statusText}`);
     } catch (error) {
       console.error('Network error details:', error);
       setStatus(`Network error: ${error.message}. Please try again.`);
