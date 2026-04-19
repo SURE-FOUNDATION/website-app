@@ -28,6 +28,8 @@ const Contact = () => {
       // Send to the portal "contact_submit" receiver (InfinityFree hosted)
       const response = await fetch(CONTACT_ENDPOINT, {
         method: 'POST',
+        // Portal host may rely on anti-bot cookies; include them for cross-origin requests.
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
           'Accept': 'application/json',
@@ -62,6 +64,13 @@ const Contact = () => {
 
       if (result?.error) {
         setStatus(result.error);
+        return;
+      }
+
+      if (!result && response.ok) {
+        setStatus(
+          "Portal security check blocked this request. Open https://portal.sfgs.com.ng in a new tab, then try again."
+        );
         return;
       }
 
