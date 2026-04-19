@@ -2,6 +2,7 @@ import FounderDesk from "../components/FounderDesk";
 import SectionH from "../components/SectionH";
 import WhychooseUs from "../components/WhychooseUs";
 import { ASSETS } from "../constants/assets";
+import { Target, Eye, Lightbulb } from "lucide-react";
 
 const About = () => {
   return (
@@ -25,36 +26,84 @@ const About = () => {
       </div>
 
       {/* Mission / Vision / Philosophy */}
-      <section className="py-16 sm:py-20 px-5 bg-white">
+      <section className="py-16 sm:py-24 px-5 bg-white overflow-hidden">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-14">
             <p className="text-[#F069B4] text-xs font-semibold uppercase tracking-[0.18em] mb-3">Our Core Values</p>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#4a0f3f]">
               Mission, Vision &amp; Philosophy
             </h2>
             <div className="w-10 h-0.5 bg-[#F069B4] mx-auto mt-4" />
           </div>
-          <div className="grid sm:grid-cols-3 gap-6">
+
+          <div className="grid sm:grid-cols-3 gap-8">
             {[
               {
                 label: "Our Mission",
+                number: "01",
+                Icon: Target,
                 text: "To provide a structured, disciplined, and nurturing environment that equips every student with academic excellence, strong moral values, and the confidence to face the world.",
+                accent: "#4a0f3f",
+                light: "#f3eaf3",
               },
               {
                 label: "Our Vision",
+                number: "02",
+                Icon: Eye,
                 text: "To be the leading educational institution in Nigeria, producing well-rounded graduates who are academically sound, morally upright, and socially responsible.",
+                accent: "#7a1a6a",
+                light: "#faeaf6",
               },
               {
                 label: "Our Philosophy",
+                number: "03",
+                Icon: Lightbulb,
                 text: "We believe every child is born with unique potential. Our role is to discover, develop, and celebrate that potential in a joyful, supportive community.",
+                accent: "#F069B4",
+                light: "#fff0f8",
               },
-            ].map((item) => (
+            ].map(({ label, number, Icon, text, accent, light }) => (
               <div
-                key={item.label}
-                className="bg-[#f8f5f8] border-l-4 border-[#4a0f3f] rounded-r-lg p-6 shadow-sm"
+                key={label}
+                className="relative rounded-2xl overflow-hidden shadow-lg group"
+                style={{ background: "#fff" }}
               >
-                <h3 className="font-bold text-[#4a0f3f] text-base mb-3">{item.label}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{item.text}</p>
+                {/* Header block */}
+                <div
+                  className="relative flex flex-col items-start px-7 pt-8 pb-14"
+                  style={{ background: accent }}
+                >
+                  {/* Decorative large number */}
+                  <span
+                    className="absolute right-4 top-3 text-[7rem] font-black leading-none select-none pointer-events-none"
+                    style={{ color: "rgba(255,255,255,0.08)" }}
+                  >
+                    {number}
+                  </span>
+                  {/* Icon circle */}
+                  <div
+                    className="w-14 h-14 rounded-full flex items-center justify-center mb-4 shadow-md"
+                    style={{ background: "rgba(255,255,255,0.15)" }}
+                  >
+                    <Icon size={28} color="#fff" strokeWidth={1.8} />
+                  </div>
+                  <h3 className="text-white font-bold text-lg tracking-wide">{label}</h3>
+                </div>
+
+                {/* Wave connector */}
+                <div className="relative -mt-6">
+                  <svg viewBox="0 0 400 40" xmlns="http://www.w3.org/2000/svg" className="w-full" style={{ display: "block" }}>
+                    <path d="M0,0 Q100,40 200,20 Q300,0 400,30 L400,0 Z" fill={accent} />
+                    <rect x="0" y="0" width="400" height="1" fill={accent} />
+                  </svg>
+                </div>
+
+                {/* Body */}
+                <div className="px-7 pb-8 pt-3" style={{ background: "#fff" }}>
+                  <p className="text-gray-600 text-sm leading-7">{text}</p>
+                  {/* Accent bar at bottom */}
+                  <div className="mt-6 h-1 rounded-full w-12" style={{ background: accent }} />
+                </div>
               </div>
             ))}
           </div>

@@ -13,34 +13,40 @@ const heroSlides = [
 
 const features = [
   {
-    icon: <Users size={22} />,
+    icon: <Users size={24} />,
     title: "Individual Focus",
     desc: "Every student receives dedicated attention, ensuring no learner is left behind in their academic journey.",
+    color: "#4a0f3f",
   },
   {
-    icon: <BookOpen size={22} />,
+    icon: <BookOpen size={24} />,
     title: "Rigorous Curriculum",
     desc: "An intensive, well-structured programme that prepares students for national examinations and higher education.",
+    color: "#6b1558",
   },
   {
-    icon: <Award size={22} />,
+    icon: <Award size={24} />,
     title: "Academic Excellence",
     desc: "A consistent track record of outstanding results driven by dedicated and well-trained staff.",
+    color: "#8c1a70",
   },
   {
-    icon: <Lightbulb size={22} />,
+    icon: <Lightbulb size={24} />,
     title: "Critical Thinking",
     desc: "Students are trained to analyse, reason, and solve problems independently across all disciplines.",
+    color: "#4a0f3f",
   },
   {
-    icon: <Monitor size={22} />,
+    icon: <Monitor size={24} />,
     title: "Modern Facilities",
     desc: "Well-equipped classrooms, science laboratories, and ICT infrastructure designed for effective learning.",
+    color: "#6b1558",
   },
   {
-    icon: <Globe size={22} />,
+    icon: <Globe size={24} />,
     title: "Extracurricular Development",
     desc: "Sports, arts, and clubs that build character, teamwork, and leadership beyond the classroom.",
+    color: "#8c1a70",
   },
 ];
 
@@ -73,8 +79,6 @@ const HomePage = () => {
 
       {/* ── Hero Slideshow ── */}
       <section className="relative min-h-screen w-full flex flex-col items-center justify-center text-center px-5 overflow-hidden">
-
-        {/* Slides */}
         {heroSlides.map((src, i) => (
           <div
             key={src}
@@ -85,11 +89,7 @@ const HomePage = () => {
             }}
           />
         ))}
-
-        {/* Overlay */}
         <div className="absolute inset-0 bg-[#0d0210]/75" />
-
-        {/* Content */}
         <div className="relative z-10 max-w-2xl mx-auto w-full">
           <p className="text-[#F069B4] text-xs font-semibold uppercase tracking-[0.18em] mb-5">
             Sure Foundation Group of Schools
@@ -117,8 +117,6 @@ const HomePage = () => {
             </Link>
           </div>
         </div>
-
-        {/* Dot Navigation */}
         <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-2 z-10">
           {heroSlides.map((_, i) => (
             <button
@@ -139,7 +137,6 @@ const HomePage = () => {
       <section className="py-16 sm:py-20 px-5 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
-            {/* Text */}
             <div>
               <p className="text-[#F069B4] text-xs font-semibold uppercase tracking-[0.18em] mb-3">About Us</p>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#4a0f3f] leading-snug mb-4">
@@ -163,24 +160,22 @@ const HomePage = () => {
                 Read More About Us <ArrowRight size={14} />
               </Link>
             </div>
-
-            {/* Images */}
             <div className="flex flex-col gap-3">
               <img
                 src={ASSETS.programSecondary}
                 alt="Secondary School"
-                className="w-full h-52 sm:h-64 object-cover rounded-lg"
+                className="w-full h-52 sm:h-64 object-cover rounded-xl"
               />
               <div className="grid grid-cols-2 gap-3">
                 <img
                   src={ASSETS.featureAcademicExcellence}
                   alt="Academic"
-                  className="w-full h-32 sm:h-40 object-cover rounded-lg"
+                  className="w-full h-32 sm:h-40 object-cover rounded-xl"
                 />
                 <img
                   src={ASSETS.facilities1}
                   alt="Facilities"
-                  className="w-full h-32 sm:h-40 object-cover rounded-lg"
+                  className="w-full h-32 sm:h-40 object-cover rounded-xl"
                 />
               </div>
             </div>
@@ -191,25 +186,31 @@ const HomePage = () => {
       {/* ── Why Choose Us ── */}
       <section className="py-16 sm:py-20 px-5 bg-[#f8f5f8]">
         <div className="max-w-6xl mx-auto">
-          <div className="mb-10 sm:mb-12">
+          <div className="text-center mb-12">
             <p className="text-[#F069B4] text-xs font-semibold uppercase tracking-[0.18em] mb-3">Why Choose Us</p>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#4a0f3f] mb-3">
               Learning Is Just the Beginning
             </h2>
-            <div className="w-10 h-0.5 bg-[#F069B4]" />
+            <div className="w-10 h-0.5 bg-[#F069B4] mx-auto" />
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((f) => (
               <div
                 key={f.title}
-                className="bg-white border-l-4 border-[#4a0f3f] p-5 sm:p-6 rounded-r-lg shadow-sm"
+                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col"
               >
-                <div className="flex items-center gap-3 mb-2.5">
-                  <span className="text-[#F069B4] flex-shrink-0">{f.icon}</span>
-                  <h3 className="font-bold text-[#4a0f3f] text-sm sm:text-base">{f.title}</h3>
+                <div className="h-1.5 w-full" style={{ background: f.color }} />
+                <div className="p-6 flex flex-col flex-1">
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 flex-shrink-0"
+                    style={{ background: f.color + "15" }}
+                  >
+                    <span style={{ color: f.color }}>{f.icon}</span>
+                  </div>
+                  <h3 className="font-bold text-[#4a0f3f] text-base mb-2">{f.title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed flex-1">{f.desc}</p>
                 </div>
-                <p className="text-gray-500 text-sm leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>

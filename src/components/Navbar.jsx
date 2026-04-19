@@ -20,7 +20,6 @@ const Navbar = () => {
     setIsDropdownOpen(false);
   }, [location]);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -38,23 +37,23 @@ const Navbar = () => {
     <>
       <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? "shadow-lg" : ""} bg-[#4a0f3f]`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20">
+          <div className="flex items-center justify-between h-16 lg:h-20">
 
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 flex-shrink-0 min-h-[44px]">
               <img
                 src={ASSETS.logo}
                 alt="Sure Foundation"
-                className="h-9 w-9 sm:h-10 sm:w-10 object-contain"
+                className="h-9 w-9 object-contain"
               />
-              <div className="hidden sm:block">
+              <div>
                 <span className="block text-white font-bold text-sm leading-tight">Sure Foundation</span>
                 <span className="block text-[#F069B4] text-xs">Group of Schools</span>
               </div>
             </Link>
 
-            {/* Desktop Nav */}
-            <ul className="hidden md:flex items-center gap-1">
+            {/* Desktop Nav — only at lg+ */}
+            <ul className="hidden lg:flex items-center gap-1">
               {navLinks.map((link) => (
                 <li key={link.to}>
                   <Link
@@ -95,17 +94,17 @@ const Navbar = () => {
                   href="https://portal.sfgs.com.ng/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block px-5 py-2 bg-[#F069B4] text-white text-sm font-semibold rounded-md hover:bg-white hover:text-[#4a0f3f] transition-all duration-200"
+                  className="inline-block px-3 py-2 text-[#F069B4] text-sm font-semibold underline underline-offset-4 decoration-[#F069B4]/50 hover:decoration-[#F069B4] transition-all duration-200"
                 >
                   Student Portal
                 </a>
               </li>
             </ul>
 
-            {/* Hamburger */}
+            {/* Hamburger — shows below lg */}
             <button
               type="button"
-              className="md:hidden flex items-center justify-center w-11 h-11 text-[#F069B4] rounded-md hover:bg-white/10 transition-colors"
+              className="lg:hidden flex items-center justify-center w-11 h-11 text-[#F069B4] rounded-md hover:bg-white/10 transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             >
@@ -116,15 +115,13 @@ const Navbar = () => {
       </nav>
 
       {/* ── Mobile Drawer ── */}
-      {/* Backdrop */}
       <div
         onClick={() => setIsMobileMenuOpen(false)}
-        className={`fixed inset-0 z-40 bg-black/60 md:hidden transition-opacity duration-300 ${isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+        className={`fixed inset-0 z-40 bg-black/60 lg:hidden transition-opacity duration-300 ${isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
       />
 
-      {/* Drawer panel */}
       <div
-        className={`fixed top-0 right-0 z-50 h-full w-[280px] bg-[#4a0f3f] shadow-2xl md:hidden flex flex-col transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
+        className={`fixed top-0 right-0 z-50 h-full w-[280px] bg-[#4a0f3f] shadow-2xl lg:hidden flex flex-col transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
       >
         {/* Drawer Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-white/10 h-16">
@@ -144,7 +141,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Drawer Links — scrollable if needed */}
+        {/* Drawer Links */}
         <nav className="flex-1 overflow-y-auto px-4 py-4">
           <ul className="space-y-1">
             {navLinks.map((link) => (
