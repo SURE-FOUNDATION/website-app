@@ -1,11 +1,15 @@
 export const ASSETS = {
   logo: "/images/logo.png",
   heroMain: "/images/hero-main.jpg",
+  heroSlider1: "/images/slider-1.jpg",
+  heroGallery1: "/images/gallery-1.jpg",
+  heroGallery2: "/images/gallery-2.jpg",
+  heroGallery3: "/images/gallery-3.jpg",
   aboutHero: "/images/about-hero.jpg",
   ctaBg: "/images/cta-bg.jpg",
   whyChooseUsBg: "/images/why-choose-us-bg.jpg",
   academicCalendarHero: "/images/academic-calendar-hero.jpg",
-  campusHero: "/images/why-choose-us-bg.jpg",
+  campusHero: "/images/campus-1.jpg",
   campus1: "/images/campus-1.jpg",
   campus2: "/images/campus-2.jpg",
   facilities1: "/images/facilities-1.jpg",
@@ -22,4 +26,3 @@ export const ASSETS = {
   iconPhilosophy: "/images/icon-philosophy.png",
   academicCalendarPdf: "/docs/academic-calendar-2024-2025.pdf",
 };
-

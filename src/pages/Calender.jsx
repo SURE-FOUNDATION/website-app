@@ -37,45 +37,59 @@ const Calender = () => {
   }, []);
 
   return (
-    <>
-      {/* Hero Section */}
+    <div className="bg-white">
+
+      {/* Hero */}
       <div
-        className="relative min-h-[80vh] w-full bg-cover bg-center before:absolute before:inset-0 before:bg-[rgba(4,9,30,0.7)] flex items-center justify-center"
+        className="relative min-h-[80vh] w-full bg-cover bg-center flex items-center justify-center"
         style={{ backgroundImage: `url('${ASSETS.academicCalendarHero}')` }}
       >
-        <h1 className="text-white text-4xl font-bold drop-shadow-lg">Academic Calendar</h1>
+        <div className="absolute inset-0 bg-[rgba(4,9,30,0.7)]" />
+        <div className="relative z-10 text-center px-4">
+          <p className="text-[#F069B4] text-xs font-semibold uppercase tracking-[0.18em] mb-3">
+            School Schedule
+          </p>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white drop-shadow-lg">
+            Academic Calendar
+          </h1>
+          <div className="w-12 h-0.5 bg-[#F069B4] mx-auto mt-5" />
+        </div>
       </div>
 
       {/* Calendar Content */}
-      <div className="container mx-auto p-6 text-center">
-        <h2 className="text-3xl font-bold text-red-600">Academic Schedule</h2>
-        <p className="mt-4 text-lg text-gray-700">
-          Stay updated with our academic schedules and events.
-        </p>
-        {sessionLabel && (
-          <p className="mt-2 text-sm text-gray-600">
-            Current Session: <span className="font-semibold">{sessionLabel}</span>
-          </p>
-        )}
+      <section className="py-16 sm:py-20 px-5">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <p className="text-[#F069B4] text-xs font-semibold uppercase tracking-[0.18em] mb-3">Stay Updated</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#4a0f3f]">Academic Schedule</h2>
+            <div className="w-10 h-0.5 bg-[#F069B4] mx-auto mt-4" />
+            <p className="mt-4 text-gray-600 text-sm">
+              Stay updated with our academic schedules and events.
+            </p>
+            {sessionLabel && (
+              <p className="mt-2 text-sm text-gray-500">
+                Current Session: <span className="font-semibold text-[#4a0f3f]">{sessionLabel}</span>
+              </p>
+            )}
+          </div>
 
-        {/* PDF Preview */}
-        <div className="mt-8">
-          <div className="mx-auto w-full max-w-6xl overflow-hidden rounded-lg border bg-white shadow-md text-left">
-            <div className="flex flex-col gap-3 border-b bg-gray-50 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
-              <div className="text-left text-sm text-gray-700">
+          {/* PDF Preview */}
+          <div className="mx-auto w-full overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm">
+            <div className="flex flex-col gap-3 border-b bg-[#f8f5f8] px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+              <div className="text-sm text-gray-600">
                 {isLoading
                   ? "Loading calendar..."
                   : calendarUrl
-                    ? "Preview"
-                    : "No calendar uploaded yet."}
+                  ? "Preview"
+                  : "No calendar uploaded yet."}
               </div>
               <div className="flex flex-wrap gap-2">
                 <a
                   href={calendarUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`rounded px-3 py-2 text-sm font-semibold text-white ${
-                    calendarUrl ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-400 pointer-events-none"
+                  className={`rounded-lg px-4 py-2 text-sm font-semibold text-white transition-colors ${
+                    calendarUrl ? "bg-[#4a0f3f] hover:bg-[#F069B4]" : "bg-gray-300 pointer-events-none"
                   }`}
                 >
                   Open PDF
@@ -83,8 +97,8 @@ const Calender = () => {
                 <a
                   href={calendarUrl}
                   download
-                  className={`rounded px-3 py-2 text-sm font-semibold text-white ${
-                    calendarUrl ? "bg-emerald-600 hover:bg-emerald-700" : "bg-gray-400 pointer-events-none"
+                  className={`rounded-lg px-4 py-2 text-sm font-semibold text-white transition-colors ${
+                    calendarUrl ? "bg-[#F069B4] hover:bg-[#4a0f3f]" : "bg-gray-300 pointer-events-none"
                   }`}
                 >
                   Download
@@ -101,14 +115,14 @@ const Calender = () => {
                 />
               </div>
             ) : (
-              <div className="p-6 text-sm text-gray-700">
-                Upload the academic calendar PDF in the portal: Admin → Academics → Academic Calendar.
+              <div className="p-6 text-sm text-gray-500">
+                No calendar available at the moment. Please check back later.
               </div>
             )}
           </div>
         </div>
-      </div>
-    </>
+      </section>
+    </div>
   );
 };
 

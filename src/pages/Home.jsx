@@ -1,6 +1,15 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ASSETS } from "../constants/assets";
 import { BookOpen, Users, Award, Lightbulb, Monitor, Globe, ArrowRight, GraduationCap } from "lucide-react";
+
+const heroSlides = [
+  ASSETS.heroMain,
+  ASSETS.heroSlider1,
+  ASSETS.heroGallery1,
+  ASSETS.heroGallery2,
+  ASSETS.campus1,
+];
 
 const features = [
   {
@@ -36,15 +45,51 @@ const features = [
 ];
 
 const HomePage = () => {
+  const [current, setCurrent] = useState(0);
+  const [fading, setFading] = useState(false);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setFading(true);
+      setTimeout(() => {
+        setCurrent((prev) => (prev + 1) % heroSlides.length);
+        setFading(false);
+      }, 600);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const goTo = (index) => {
+    if (index === current) return;
+    setFading(true);
+    setTimeout(() => {
+      setCurrent(index);
+      setFading(false);
+    }, 600);
+  };
+
   return (
     <main className="overflow-x-hidden">
 
-      {/* ── Hero ── */}
-      <section
-        className="relative min-h-screen w-full bg-cover bg-center flex flex-col items-center justify-center text-center px-5"
-        style={{ backgroundImage: `url('${ASSETS.heroMain}')` }}
-      >
+      {/* ── Hero Slideshow ── */}
+      <section className="relative min-h-screen w-full flex flex-col items-center justify-center text-center px-5 overflow-hidden">
+
+        {/* Slides */}
+        {heroSlides.map((src, i) => (
+          <div
+            key={src}
+            className="absolute inset-0 bg-cover bg-center transition-opacity duration-700"
+            style={{
+              backgroundImage: `url('${src}')`,
+              opacity: i === current ? (fading ? 0 : 1) : 0,
+            }}
+          />
+        ))}
+
+        {/* Overlay */}
         <div className="absolute inset-0 bg-[#0d0210]/75" />
+
+        {/* Content */}
         <div className="relative z-10 max-w-2xl mx-auto w-full">
           <p className="text-[#F069B4] text-xs font-semibold uppercase tracking-[0.18em] mb-5">
             Sure Foundation Group of Schools
@@ -54,8 +99,8 @@ const HomePage = () => {
             <span className="text-[#F069B4]">Moral Standards</span>
           </h1>
           <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-lg mx-auto mb-8">
-            A structured and disciplined learning environment that equips secondary school
-            students with the knowledge, values, and skills to excel.
+            A structured and disciplined learning environment that equips students
+            with the knowledge, values, and skills to excel.
           </p>
           <div className="flex flex-col gap-3 w-full max-w-xs mx-auto sm:max-w-none sm:flex-row sm:justify-center">
             <Link
@@ -71,6 +116,22 @@ const HomePage = () => {
               About Our School
             </Link>
           </div>
+        </div>
+
+        {/* Dot Navigation */}
+        <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-2 z-10">
+          {heroSlides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className={`rounded-full transition-all duration-300 ${
+                i === current
+                  ? "w-6 h-2.5 bg-[#F069B4]"
+                  : "w-2.5 h-2.5 bg-white/40 hover:bg-white/70"
+              }`}
+            />
+          ))}
         </div>
       </section>
 
@@ -103,7 +164,7 @@ const HomePage = () => {
               </Link>
             </div>
 
-            {/* Images — stacked cleanly on mobile */}
+            {/* Images */}
             <div className="flex flex-col gap-3">
               <img
                 src={ASSETS.programSecondary}
@@ -156,7 +217,6 @@ const HomePage = () => {
       </section>
 
       {/* ── CTA Banner ── */}
-      {/* Note: bg-fixed (background-attachment: fixed) is intentionally omitted — it does not render correctly on mobile Safari/iOS */}
       <section
         className="relative w-full py-20 sm:py-24 px-5 bg-cover bg-center flex items-center justify-center"
         style={{
