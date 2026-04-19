@@ -14,7 +14,7 @@ const Navbar = () => {
           <img
             src={ASSETS.logo}
             alt="Sure Foundation"
-            className="h-10 w-10 rounded bg-white object-contain p-1"
+            className="h-10 w-10 object-contain"
           />
           <span className="hidden sm:inline font-semibold tracking-wide">
             Sure Foundation
@@ -121,4 +121,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
