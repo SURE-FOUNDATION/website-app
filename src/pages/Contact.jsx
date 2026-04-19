@@ -167,15 +167,44 @@ const Contact = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <Phone className="text-red-500 flex-shrink-0" />
-              <p className="text-gray-700 text-sm sm:text-base">+234 815 090 3459</p>
+              <div className="text-gray-700 text-sm sm:text-base leading-6">
+                <p>
+                  <a className="hover:underline" href="tel:+2347066574117">
+                    +234 7066574117
+                  </a>
+                </p>
+                <p>
+                  <a className="hover:underline" href="tel:+2348032750680">
+                    +234 8032750680
+                  </a>
+                </p>
+                <p>
+                  <a className="hover:underline" href="tel:+2347070879787">
+                    +234 7070879787
+                  </a>
+                </p>
+              </div>
             </div>
             <div className="flex items-center space-x-3">
               <Mail className="text-red-500 flex-shrink-0" />
-              <p className="text-gray-700 text-sm sm:text-base">info@surefoundationgroupofschools.com</p>
+              <p className="text-gray-700 text-sm sm:text-base">
+                <a className="hover:underline" href="mailto:surefoundationgroupofschool@gmail.com">
+                  surefoundationgroupofschool@gmail.com
+                </a>
+              </p>
             </div>
             <div className="flex items-start space-x-3">
               <MapPin className="text-red-500 flex-shrink-0 mt-1" />
-              <p className="text-gray-700 text-sm sm:text-base">33 Ada George Road, Agip, Port Harcourt, Nigeria</p>
+              <p className="text-gray-700 text-sm sm:text-base">
+                <a
+                  className="hover:underline"
+                  href="https://www.google.com/maps/search/?api=1&query=33%20Ada%20George%20Road%2C%20Agip%2C%20Port%20Harcourt%2C%20Nigeria"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  33 Ada George Road, Agip, Port Harcourt, Nigeria
+                </a>
+              </p>
             </div>
           </div>
         

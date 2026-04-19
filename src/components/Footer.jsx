@@ -55,9 +55,20 @@ const Footer = () => {
       <div className="flex-1 min-w-[200px]">
         <h3 className="text-lg mb-4 text-white">Sure Foundation Group Of Schools,</h3>
         <p className="text-sm text-white leading-7">
-          <i className="fas fa-map-marker-alt text-yellow-500 mr-2"></i> 33 Ada George Road, Agip, Port Harcourt<br />
-          <i className="fas fa-phone text-yellow-500 mr-2"></i> <a href="tel:+2348150903459" className="hover:text-yellow-500">+234 815 090 3459</a><br />
-          <i className="fas fa-phone text-yellow-500 mr-2"></i> <a href="tel:+2348141309816" className="hover:text-yellow-500">+234 814 130 9816</a><br />
+          <i className="fas fa-map-marker-alt text-yellow-500 mr-2"></i>{" "}
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=33%20Ada%20George%20Road%2C%20Agip%2C%20Port%20Harcourt%2C%20Nigeria"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-yellow-500"
+          >
+            33 Ada George Road, Agip, Port Harcourt
+          </a>
+          <br />
+          <i className="fas fa-phone text-yellow-500 mr-2"></i> <a href="tel:+2347066574117" className="hover:text-yellow-500">+234 7066574117</a><br />
+          <i className="fas fa-phone text-yellow-500 mr-2"></i> <a href="tel:+2348032750680" className="hover:text-yellow-500">+234 8032750680</a><br />
+          <i className="fas fa-phone text-yellow-500 mr-2"></i> <a href="tel:+2347070879787" className="hover:text-yellow-500">+234 7070879787</a><br />
+          <i className="fas fa-envelope text-yellow-500 mr-2"></i> <a href="mailto:surefoundationgroupofschool@gmail.com" className="hover:text-yellow-500">surefoundationgroupofschool@gmail.com</a><br />
         </p>
       </div>
       
