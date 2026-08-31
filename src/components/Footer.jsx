@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
 import { ASSETS } from "../constants/assets";
-import { MapPin, Phone, Mail, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+} from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -37,15 +45,23 @@ const Footer = () => {
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <Link to="/" className="inline-flex items-center gap-3 mb-5">
-              <img src={ASSETS.logo} alt="Sure Foundation" className="h-12 w-12 object-contain" />
+              <img
+                src={ASSETS.logo}
+                alt="Sure Foundation"
+                className="h-12 w-12 object-contain"
+              />
               <div>
-                <span className="block font-bold text-white text-sm leading-tight">Sure Foundation</span>
-                <span className="block text-[#F069B4] text-xs">Group of Schools</span>
+                <span className="block font-bold text-white text-sm leading-tight">
+                  Sure Foundation
+                </span>
+                <span className="block text-[#F069B4] text-xs">
+                  Group of Schools
+                </span>
               </div>
             </Link>
             <p className="text-white/70 text-sm leading-relaxed mb-6">
-              A leading educational institution offering comprehensive programs for
-              students aged 3 to 18 in Port Harcourt, Nigeria.
+              A leading educational institution offering comprehensive programs
+              for students aged 3 to 18 in Port Harcourt, Nigeria.
             </p>
             <div className="flex gap-3">
               {socialLinks.map((s) => (
@@ -123,29 +139,40 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="flex items-start gap-3 text-white/70 text-sm hover:text-[#F069B4] transition-colors"
                 >
-                  <MapPin size={16} className="text-[#F069B4] flex-shrink-0 mt-0.5" />
+                  <MapPin
+                    size={16}
+                    className="text-[#F069B4] flex-shrink-0 mt-0.5"
+                  />
                   33 Ada George Road, Agip, Port Harcourt, Nigeria
                 </a>
               </li>
               <li className="space-y-2">
-                {["+234 7066574117", "+234 8032750680", "+234 7070879787"].map((tel) => (
-                  <a
-                    key={tel}
-                    href={`tel:${tel.replace(/\s/g, "")}`}
-                    className="flex items-center gap-3 text-white/70 text-sm hover:text-[#F069B4] transition-colors"
-                  >
-                    <Phone size={14} className="text-[#F069B4] flex-shrink-0" />
-                    {tel}
-                  </a>
-                ))}
+                {["+234 7066574117", "+234 8032750680", "+234 7070879787"].map(
+                  (tel) => (
+                    <a
+                      key={tel}
+                      href={`tel:${tel.replace(/\s/g, "")}`}
+                      className="flex items-center gap-3 text-white/70 text-sm hover:text-[#F069B4] transition-colors"
+                    >
+                      <Phone
+                        size={14}
+                        className="text-[#F069B4] flex-shrink-0"
+                      />
+                      {tel}
+                    </a>
+                  )
+                )}
               </li>
               <li>
                 <a
-                  href="mailto:surefoundationgroupofschool@gmail.com"
+                  href="mailto:hr@sureeducationcenter.com.ng"
                   className="flex items-start gap-3 text-white/70 text-sm hover:text-[#F069B4] transition-colors break-all"
                 >
-                  <Mail size={14} className="text-[#F069B4] flex-shrink-0 mt-0.5" />
-                  surefoundationgroupofschool@gmail.com
+                  <Mail
+                    size={14}
+                    className="text-[#F069B4] flex-shrink-0 mt-0.5"
+                  />
+                  hr@sureeducationcenter.com.ng
                 </a>
               </li>
             </ul>
@@ -157,7 +184,8 @@ const Footer = () => {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-center">
           <p className="text-white/50 text-xs">
-            &copy; {currentYear} Sure Foundation Group of Schools. All Rights Reserved.
+            &copy; {currentYear} Sure Foundation Group of Schools. All Rights
+            Reserved.
           </p>
           <p className="text-white/30 text-xs">
             Shaping futures in Port Harcourt, Nigeria.
