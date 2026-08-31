@@ -163,17 +163,23 @@ const Footer = () => {
                   )
                 )}
               </li>
-              <li>
-                <a
-                  href="mailto:hr@sureeducationcenter.com.ng"
-                  className="flex items-start gap-3 text-white/70 text-sm hover:text-[#F069B4] transition-colors break-all"
-                >
-                  <Mail
-                    size={14}
-                    className="text-[#F069B4] flex-shrink-0 mt-0.5"
-                  />
-                  hr@sureeducationcenter.com.ng
-                </a>
+              <li className="space-y-2">
+                {[
+                  "surefoundationgroupofschool@gmail.com",
+                  "hr@sureeducationcenter.com.ng",
+                ].map((email) => (
+                  <a
+                    key={email}
+                    href={`mailto:${email}`}
+                    className="flex items-start gap-3 text-white/70 text-sm hover:text-[#F069B4] transition-colors break-all"
+                  >
+                    <Mail
+                      size={14}
+                      className="text-[#F069B4] flex-shrink-0 mt-0.5"
+                    />
+                    {email}
+                  </a>
+                ))}
               </li>
             </ul>
           </div>

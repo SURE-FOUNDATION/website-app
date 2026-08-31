@@ -131,12 +131,20 @@ const Contact = () => {
                   <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
                     <Mail size={16} className="text-[#F069B4]" />
                   </div>
-                  <a
-                    href="mailto:hr@sureeducationcenter.com.ng"
-                    className="text-white/80 text-sm hover:text-[#F069B4] transition-colors break-all"
-                  >
-                    hr@sureeducationcenter.com.ng
-                  </a>
+                  <div className="text-white/80 text-sm space-y-1 break-all">
+                    <a
+                      href="mailto:surefoundationgroupofschool@gmail.com"
+                      className="block hover:text-[#F069B4] transition-colors"
+                    >
+                      surefoundationgroupofschool@gmail.com
+                    </a>
+                    <a
+                      href="mailto:hr@sureeducationcenter.com.ng"
+                      className="block hover:text-[#F069B4] transition-colors"
+                    >
+                      hr@sureeducationcenter.com.ng
+                    </a>
+                  </div>
                 </div>
 
                 <div className="flex items-start gap-4">
